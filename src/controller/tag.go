@@ -11,22 +11,7 @@ import (
 	"os"
 )
 
-func HandlerTwo(w http.ResponseWriter, r *http.Request) {
-	json.NewEncoder(w).Encode("Hello　World")
-}
-
-type Files struct {
-	OriginalFileName string `json:"OriginalFileName"`
-	OutputFileName   string `json:"OutputFileName"`
-}
-
-type Body struct {
-	RequestBody  Files             `json:"request_body"`
-	Replacements map[string]string `json:"replacements"`
-	Insertions   map[string]string `json:"insertions"`
-}
-
-func BodyTestHandler(w http.ResponseWriter, r *http.Request) {
+func TagHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	if r.Method != "POST" {
 		w.WriteHeader(http.StatusMethodNotAllowed)
